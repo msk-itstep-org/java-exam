@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задачи</title>
+</head>
+<body>
+    <h1>Задачи</h1>
+    <ul>
+        <li th:each="issue : ${issues}">
+            <strong th:text="${issue.name}"></strong>
+            <p th:text="${issue.description}"></p>
+            <p>
+                Автор:
+                <span th:text="${issue.reporter.username}"></span>
+            </p>
+            <p>
+                Исполнитель:
+                <span th:text="${issue.assignee.username}"></span>
+            </p>
+        </li>
+    </ul>
+</body>
+</html>
