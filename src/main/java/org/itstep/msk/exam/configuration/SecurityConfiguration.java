@@ -1,5 +1,6 @@
 package org.itstep.msk.exam.configuration;
 
+import org.itstep.msk.exam.enums.Roles;
 import org.itstep.msk.exam.service.PlainPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -46,9 +47,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/").authenticated() // Разрешить доступ всем
+                .antMatchers("/login").permitAll() // Разрешить доступ всем
+                .antMatchers("/issues/**").hasAnyAuthority(Roles.DEVELOPER.toString()) // Разрешить доступ только пользователям с ролью ADMIN
+                .anyRequest().authenticated(); // По остальным урлам разрешить доступ только залогиненным пользователям
 
         httpSecurity.csrf().disable();
 
