@@ -1,0 +1,41 @@
+create table proj(
+id int unsigned not null auto_increment primary key,
+projname varchar (100) not null
+
+
+);
+
+create table article(
+id int unsigned not null auto_increment primary key,
+articlename varchar(100) not null,
+references(proj),(projname)
+description varchar (100) not null,
+reporter id int unsigned not null references(proj_id),
+assignee varchar(10) not null
+
+
+);
+
+create table roles(
+id int unsigned not null auto_increment primary key,
+role varchar (10) not null
+
+
+);
+
+create table users(
+id int unsigned not null auto_increment primary key,
+username varchar(100) not null,
+password varchar(10) not null
+
+
+);
+
+create table user_roles(
+user_id int unsigned not null references(users.id)
+role_id int unsigned not null references(roles.id)
+
+primary key (user_id,role_id)
+
+
+);

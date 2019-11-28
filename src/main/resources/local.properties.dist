@@ -1,9 +1,9 @@
 server_address=localhost
-server_port=8080
+server_port=8888
 
 db_host=localhost
-db_port=3306
-db_name=
-db_username=
-db_password=
+db_port=3307
+db_name=db_one
+db_username=root
+db_password=1234
 db_show_sql=true

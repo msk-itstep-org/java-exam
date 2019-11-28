@@ -1,5 +1,6 @@
 package org.itstep.msk.exam.configuration;
 
+import org.itstep.msk.exam.enums.RolesforPermit;
 import org.itstep.msk.exam.service.PlainPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -48,7 +49,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/issues").hasAnyAuthority(RolesforPermit.User.toString())
                 .anyRequest().authenticated();
+
 
         httpSecurity.csrf().disable();
 
