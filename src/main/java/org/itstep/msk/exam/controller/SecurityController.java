@@ -38,7 +38,7 @@ public class SecurityController {
 
     @GetMapping("/issues/{id}")
     public String getIssues(@PathVariable Integer id, Model model) {
-        model.addAttribute("issues", issueRepository.findAllByProject(projectRepository.findById(id).orElse(new Project())));
+        model.addAttribute("issues", issueRepository.findAllByProject(projectRepository.getOne(id)));
         return "issues";
     }
 }
