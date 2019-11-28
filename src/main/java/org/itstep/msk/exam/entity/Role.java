@@ -11,4 +11,17 @@ public class Role {
     private Integer id;
     @Column
     private String role;
+
+    public Integer getId() {
+        return id;
+    }
+
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

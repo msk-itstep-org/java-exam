@@ -1,0 +1,1 @@
+alter table issues add assigne_id int;
